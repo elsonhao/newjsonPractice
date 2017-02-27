@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		AF65FE571E6132840056EEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65FE561E6132840056EEBF /* AppDelegate.swift */; };
-		AF65FE591E6132840056EEBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65FE581E6132840056EEBF /* ViewController.swift */; };
 		AF65FE5C1E6132840056EEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF65FE5A1E6132840056EEBF /* Main.storyboard */; };
 		AF65FE5E1E6132840056EEBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF65FE5D1E6132840056EEBF /* Assets.xcassets */; };
 		AF65FE611E6132840056EEBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF65FE5F1E6132840056EEBF /* LaunchScreen.storyboard */; };
+		AF65FE691E6134680056EEBF /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65FE681E6134680056EEBF /* FirstTableViewController.swift */; };
+		AF65FE6B1E6157EB0056EEBF /* myTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65FE6A1E6157EB0056EEBF /* myTableViewCell.swift */; };
+		AFE63A311E629CE20066BBA6 /* class.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE63A301E629CE20066BBA6 /* class.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AF65FE531E6132840056EEBF /* jsonPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsonPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF65FE561E6132840056EEBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF65FE581E6132840056EEBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF65FE5B1E6132840056EEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF65FE5D1E6132840056EEBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF65FE601E6132840056EEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF65FE621E6132840056EEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF65FE681E6134680056EEBF /* FirstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
+		AF65FE6A1E6157EB0056EEBF /* myTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myTableViewCell.swift; sourceTree = "<group>"; };
+		AFE63A301E629CE20066BBA6 /* class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = class.swift; path = ../class.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +58,14 @@
 		AF65FE551E6132840056EEBF /* jsonPractice */ = {
 			isa = PBXGroup;
 			children = (
+				AFE63A301E629CE20066BBA6 /* class.swift */,
+				AF65FE681E6134680056EEBF /* FirstTableViewController.swift */,
 				AF65FE561E6132840056EEBF /* AppDelegate.swift */,
-				AF65FE581E6132840056EEBF /* ViewController.swift */,
 				AF65FE5A1E6132840056EEBF /* Main.storyboard */,
 				AF65FE5D1E6132840056EEBF /* Assets.xcassets */,
 				AF65FE5F1E6132840056EEBF /* LaunchScreen.storyboard */,
 				AF65FE621E6132840056EEBF /* Info.plist */,
+				AF65FE6A1E6157EB0056EEBF /* myTableViewCell.swift */,
 			);
 			path = jsonPractice;
 			sourceTree = "<group>";
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF65FE591E6132840056EEBF /* ViewController.swift in Sources */,
+				AFE63A311E629CE20066BBA6 /* class.swift in Sources */,
 				AF65FE571E6132840056EEBF /* AppDelegate.swift in Sources */,
+				AF65FE691E6134680056EEBF /* FirstTableViewController.swift in Sources */,
+				AF65FE6B1E6157EB0056EEBF /* myTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U55RL8468U;
 				INFOPLIST_FILE = jsonPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elson.jsonPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U55RL8468U;
 				INFOPLIST_FILE = jsonPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elson.jsonPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -300,6 +310,7 @@
 				AF65FE671E6132840056EEBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
