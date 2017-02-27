@@ -81,19 +81,22 @@ class FirstTableViewController: UITableViewController {
             cell.myLabel.text = resultsArray?[indexPath.row]["Name"]
         
        let imageUrl =  resultsArray?[indexPath.row]["ImageName"]
-        
         let url = URL(string: imageUrl!)
-        do {
-            let data = try Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                cell.myImageview.image = UIImage(data: data)
-            }
-            
-        } catch  {
-            
-        }
-        return cell
         
+        let urlRequest  = URLRequest(url: url!, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 30)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            
+            if let data = data{
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    cell.myImageview.image = image
+                }
+                
+            }
+        }
+        task.resume()
+        return cell 
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
