@@ -15,4 +15,5 @@ class animal{
     var age:String!
     var note:String!
     var phone:String!
+   
 }

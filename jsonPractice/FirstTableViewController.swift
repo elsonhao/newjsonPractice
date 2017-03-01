@@ -12,9 +12,10 @@ class FirstTableViewController: UITableViewController {
 
     
    
+    var animalarray:[animal]? // animal物件陣列
+    var imageArray:[Data]? //圖片data陣列
     
-    
-    var resultsArray:[[String:String]]?
+
     
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class FirstTableViewController: UITableViewController {
     
     func getJson() {
         
+        animalarray = []
         
         let url = URL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=f4a75ba9-7721-4363-884d-c3820b0b917c")
         let request = URLRequest(url: url!)
@@ -42,19 +44,28 @@ class FirstTableViewController: UITableViewController {
                 
                 let results = result["results"] as! [[String:String]]
                 
-                self.resultsArray = results
                 
-               
                 
+                for myresult in results{
+                    
+                    let animalArticle = animal()
+                    animalArticle.name = myresult["Name"]
+                    animalArticle.age = myresult["Age"]
+                    animalArticle.imageURL = myresult["ImageName"]
+                    animalArticle.note = myresult["Note"]
+                    animalArticle.phone = myresult["Phone"]
+                    animalArticle.sex = myresult["Sex"]
+                    
+                    self.animalarray?.append(animalArticle)
+                    
+                    
+                }
+                
+        
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                    
                 
-                
-//                for show in results {
-//                    print(show)
-//                }
  
                 
             } catch  {
@@ -66,21 +77,32 @@ class FirstTableViewController: UITableViewController {
         task.resume()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "NextSegue", sender: indexPath.row)
     }
-
-    // MARK: - Table view data source
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let secondController = segue.destination as!SecondTableViewController
+        
+        let number = sender as! Int
+        
+        secondController.animalArray = animalarray
+        secondController.nowSelectIndex = number
+        secondController.animalImageData = imageArray
+    }
+    
+   
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! myTableViewCell
         
+        cell.myImageview.image = nil
     
-            cell.myLabel.text = resultsArray?[indexPath.row]["Name"]
+        cell.myLabel.text = animalarray?[indexPath.row].name
         
-       let imageUrl =  resultsArray?[indexPath.row]["ImageName"]
+       let imageUrl =  animalarray?[indexPath.row].imageURL
+        
         let url = URL(string: imageUrl!)
         
         let urlRequest  = URLRequest(url: url!, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 30)
@@ -89,8 +111,12 @@ class FirstTableViewController: UITableViewController {
             
             if let data = data{
                 let image = UIImage(data: data)
+                
+                self.imageArray?.append(data) //將取得的圖片data存到陣列
+                
                 DispatchQueue.main.async {
                     cell.myImageview.image = image
+                   
                 }
                 
             }
@@ -106,7 +132,7 @@ class FirstTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return resultsArray?.count ?? 0
+        return (animalarray?.count)!
     }
 
     /*
